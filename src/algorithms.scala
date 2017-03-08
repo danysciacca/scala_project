@@ -5,11 +5,7 @@ class algorithms {
   //regex to nfa(concatenazione, unione, stella di kleene)
   //in tabella
 
-
-
-
-
-
+//Provo il mio git
 
   //nfa to dfa
   //in tabella
