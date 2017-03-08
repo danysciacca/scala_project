@@ -9,7 +9,7 @@ class algorithms {
   //in tabella
 
 
-  
+
 
   //nfa to dfa
   //in tabella
