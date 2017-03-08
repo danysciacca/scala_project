@@ -5,4 +5,7 @@ package regfa
   */
 object execution {
 //flusso regex in ingresso e 2 visualizzazioni nfa e dfa (in tabella)
+def main(args: Array[String]): Unit = {
+  println("Orazio Urso Frocio")
+}
 }
