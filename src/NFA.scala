@@ -18,10 +18,10 @@ case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
     case _ => Set.empty
   }
 
-  val _f = (q:Either[dummyS,Either[Q, _Q]]) => q match{
-      case Right(Left(q1)) => this.f(q1)
-      case Right(Right(q2)) => another.f(q2)
-      case _ => false
+  val _f = (q:Either[dummyS,Either[Q, _Q]]) => q match{  //costruisco qui l' NFA
+      case Right(Left(q1)) => this.f(q1)    //al solito, parto dal dummy per settare il primo stato (ME STESSO)
+      case Right(Right(q2)) => another.f(q2) // qui il doppio passo a destra per andare avanti
+      case _ => false  // in tutti gli altri casi pongi pongi
     }
-    
+
 }
