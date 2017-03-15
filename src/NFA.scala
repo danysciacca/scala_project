@@ -43,7 +43,7 @@ case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
     epsiNFA(_trans, Left(this.S0), _f)
 }
   //stella di kleene
-  def kleene = {
+  def kleene[_Q](another: NFA[_Q, Stati]) = {
     object epsi extends epsi
 
     val _trans: (Q,Either[Stati,epsi])=>Set[Q] ={
