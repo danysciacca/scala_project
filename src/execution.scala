@@ -1,6 +1,8 @@
 /**
   * Created by Daniele on 08/03/2017.
   */
+import sun.security.timestamp.TimestampToken
+
 import scala.io.StdIn.readLine
 import scala.collection.Seq
 object execution {
@@ -8,8 +10,8 @@ object execution {
     println("questo algoritmo consente di trasformare una espressione regolare in nfa e poi in dfa")
     println("inserisci espressione regolare: ") //ab*
 
-   /* val line = Console.readLine()
-    println("hai inserito: "+line)*/
+    val line = Console.readLine()
+    println("insersci ab: "+line)
 
     //
 
@@ -36,8 +38,10 @@ object execution {
 
     val AB_NFA=NFA(trans, S0, Set[Stato](S2))  //TODO: chiamare bene la funzione
 
+
     //algorithms
-    println("%s".format(Seq(A,B))+"=>"+AB_NFA(Seq(A,B)))
+    //println("%s".format(Seq(A,B))+"=>"+AB_NFA(Seq(A,B)))
+    println(trans)
   }
 
 }
