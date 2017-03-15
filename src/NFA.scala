@@ -12,7 +12,7 @@ case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
     object epsi extends epsi
 
     val _trans: (Either[dummyS, Either[Q, _Q]], Either[Stati, epsi]) => Set[Either[dummyS, Either[Q, _Q]]] = {
-      case (Left(dummyS), Right(epsi)) => Set(Right(Left(this.q0)), Right(Right(another.q0)))
+      case (Left(dummyS), Right(epsi)) => Set(Right(Left(this.S0)), Right(Right(another.S0)))
       case (Right(Left(q1)), Left(_x)) => this.trans(q1, _x) map (q => Right(Left(q)))
       case (Right(Right(q2)), Left(_x)) => another.trans(q2, _x) map (q => Right(Right(q)))
       case _ => Set.empty
@@ -31,21 +31,14 @@ case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
 
     //concatenazione
     def concat[_Q](another:NFA[_Q, Stati])={
-      sealed abstract trait a1
-      object a1 extends a1 //momentaneamente l'ho definito qua, è uno stato generico
 
-      sealed abstract trait q1
-      object q1 extends q1
-
-      sealed abstract trait x
-      object x extends x
 
       sealed trait epsi
       object epsi extends epsi
 
 
       val _trans:(Either[Q, _Q],Either[Stati, epsi])=> Set[Either[Q, _Q]]={
-        case (Left(a1), Right(ε)) if this.f(a1) => Set(Right(another.S0))
+        case (Left(a1), Right(epsi)) if this.f(a1) => Set(Right(another.S0))
         case (Left(q1), Left(_x))=> this.trans(q1, _x) map (q=>Left(q))
         case (Right(q2), Left(_x))=> another.trans(q2, _x) map(q=> Right(q))
         case _=>Set.empty
