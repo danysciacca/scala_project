@@ -1,6 +1,7 @@
 /**
-  * Created by Daniele on 08/03/2017.
+  * Created by lucatosto on 15/03/17.
   */
+
 case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
   println("sono dentro NFA")
   val Q= this
@@ -15,7 +16,7 @@ case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
     sealed abstract trait dummyS
     object dummyS extends dummyS //uno stato iniziale dello stato iniziale.
     object epsi extends epsi
-  println("inizio TRANS")
+    println("inizio TRANS")
     val _trans: (Either[dummyS, Either[Q, _Q]], Either[Stati, epsi]) => Set[Either[dummyS, Either[Q, _Q]]] = {
 
 
@@ -55,7 +56,7 @@ case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
       case _=>false
     }
     epsiNFA(_trans, Left(this.S0), _f)
-}
+  }
   //stella di kleene
   def kleene[_Q](another: NFA[_Q, Stati]) = {
     println("-------STELLA DI KLEENE")
@@ -90,4 +91,10 @@ case class NFA[Q, Stati](trans: (Q, Stati)=> Set[Q], S0:Q, f:Q=>Boolean) {
   }
 
 
+  def ValueToReturn[Q, Stati](): Unit ={  //Manca passaggio paramentri
+    //che ne pensi di costruire qui la tabella? nel senso che ci facciamo mandare direttamente i dati pronti a execution
+
+    //val array = Array.fill(2,2)(0)
+    //array: Array[Array[Int]] = Array(Array(0, 0), Array(0, 0))
+  }
 }

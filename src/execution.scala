@@ -1,10 +1,15 @@
 /**
-  * Created by Daniele on 08/03/2017.
+  * Created by lucatosto on 15/03/17.
   */
+
 import sun.security.timestamp.TimestampToken
 
 import scala.io.StdIn.readLine
 import scala.collection.Seq
+import scala.runtime.ScalaRunTime._
+import scala.runtime.ScalaRunTime._
+import scala.Array
+
 object execution {
   def main(args: Array[String]): Unit = {
     println("questo algoritmo consente di trasformare una espressione regolare in nfa e poi in dfa")
@@ -42,6 +47,9 @@ object execution {
     //algorithms
     //println("%s".format(Seq(A,B))+"=>"+AB_NFA(Seq(A,B)))
     println(trans)
-  }
 
+
+    //Supponendo che ritorna un array con la funzione ValueToReturn
+    //Array.println(AB_NFA)  //ho importato la libreria
+  }
 }
